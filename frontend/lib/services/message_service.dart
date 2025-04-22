@@ -4,7 +4,7 @@ import '../models/message_model.dart';
 
 class MessageService {
   final String baseUrl =
-      'http://192.168.43.127:5000'; // 👈 Use your actual local IP
+      'http://0.0.0.0:5000'; // 👈 Use your actual local IP
 
   Future<List<MessageModel>> getMessagesByUser(
       String userId, String token) async {
