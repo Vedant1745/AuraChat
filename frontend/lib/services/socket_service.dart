@@ -6,7 +6,7 @@ class SocketService {
   Function? onUserOffline;
 
   void connect(String token) {
-    socket = IO.io("http://192.168.43.127:5000", <String, dynamic>{
+    socket = IO.io("http://0.0.0.0:5000", <String, dynamic>{
       'transports': ['websocket'],
       'auth': {'token': token},
       'autoConnect': false,
