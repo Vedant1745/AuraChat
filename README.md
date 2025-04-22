@@ -1,4 +1,4 @@
-# MoodMesh: Chat App with Sentiment Analysis
+# SentiNexus: Chat App with Sentiment Analysis
 
 A chat application built with **Flutter** for the frontend and **Node.js** for the backend, featuring **real-time messaging** and **sentiment analysis** to understand the tone of conversations. The app supports **Hinglish** language sentiment analysis using the **Gemini API**.
 
