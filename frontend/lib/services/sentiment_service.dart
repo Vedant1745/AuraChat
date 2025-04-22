@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../models/message_model.dart'; // adjust based on your file structure
 
 class SentimentService {
-  final String backendUrl = "http://<your-ip>:<port>/api/messages";
+  final String backendUrl = "http://0.0.0.0:5000";
 
   Future<List<MessageModel>> fetchSentimentData(String userId) async {
     final response = await http.get(Uri.parse('$backendUrl/sentiment/$userId'));
