@@ -5,7 +5,7 @@ import '../models/message_model.dart';
 
 class ApiService {
   static const baseUrl =
-      "http://192.168.43.127:5000"; // replace with your IP for mobile testing
+      "http://0.0.0.0:5000"; // replace with your IP for mobile testing
   static String? token;
 
   static Future<bool> signup(String username, String email, String password,
