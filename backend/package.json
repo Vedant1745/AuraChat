@@ -8,7 +8,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.2",
     "multer": "^1.4.5-lts.2",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "sentiment": "^5.0.2"
   },
   "name": "backend",
   "version": "1.0.0",
