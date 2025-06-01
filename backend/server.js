@@ -27,7 +27,13 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
+
+mongoose.connection.on('error', err => {
+  console.error('❌ MongoDB error:', err);
+});
 
 // Static file for profile images
 const storage = multer.diskStorage({
@@ -155,11 +161,24 @@ app.get("/sentiment/:conversationId", fetchUser, async (req, res) => {
 // Get all messages sent by a specific user
 app.get("/messages/user/:userId", fetchUser, async (req, res) => {
   try {
+    console.log("🔍 Fetching messages for user:", req.params.userId);
+    console.log("🔑 Auth token:", req.header("auth-token"));
+    
     const messages = await Message.find({ senderId: req.params.userId });
-    console.log("Messages found:", messages);  // Debug log
+    console.log("📝 Total messages found:", messages.length);
+    
+    if (messages.length === 0) {
+      console.log("ℹ️ No messages found for user");
+      // Check if user exists
+      const user = await User.findById(req.params.userId);
+      console.log("👤 User exists:", !!user);
+    } else {
+      console.log("📊 First message sample:", JSON.stringify(messages[0], null, 2));
+    }
+    
     res.json(messages);
   } catch (err) {
-    console.error("Error fetching messages:", err);
+    console.error("❌ Error fetching messages:", err);
     res.status(500).json({ error: "Server error" });
   }
 });
